@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julie Gilson – Nana & Wellness Partner</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blush: #f5c6d0;
+    --rose: #d4748a;
+    --deep-rose: #a84f63;
+    --cream: #fdf6f0;
+    --warm-white: #fffaf7;
+    --soft-green: #b5cbb7;
+    --sage: #7a9e7e;
+    --text: #3a2e2e;
+    --text-light: #7a6060;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Lato', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* Background petals */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 10% 15%, rgba(245,198,208,0.35) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 60% at 90% 80%, rgba(181,203,183,0.25) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 30% at 80% 10%, rgba(212,116,138,0.12) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+  }
+
+  /* ---- HEADER ---- */
+  .header {
+    text-align: center;
+    margin-bottom: 36px;
+    animation: fadeDown 0.7s ease both;
+  }
+
+  .avatar-wrap {
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blush), var(--rose), var(--soft-green));
+    padding: 3px;
+    box-shadow: 0 8px 30px rgba(168,79,99,0.2);
+  }
+
+  .avatar-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--warm-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 52px;
+  }
+
+  .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--deep-rose);
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+
+  .tagline {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--sage);
+    margin-bottom: 14px;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    color: var(--rose);
+    font-size: 1.1rem;
+    margin-bottom: 14px;
+  }
+  .divider-line {
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--rose));
+  }
+  .divider-line.right {
+    background: linear-gradient(to left, transparent, var(--rose));
+  }
+
+  .bio {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--text-light);
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  /* ---- SECTION LABEL ---- */
+  .section-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--deep-rose);
+    text-align: center;
+    margin: 32px 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+  }
+  .section-label::before,
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(168,79,99,0.3));
+  }
+  .section-label::after {
+    background: linear-gradient(to left, transparent, rgba(168,79,99,0.3));
+  }
+
+  /* ---- LINK CARDS ---- */
+  .link-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--warm-white);
+    border: 1px solid rgba(245,198,208,0.6);
+    border-radius: 16px;
+    padding: 15px 18px;
+    margin-bottom: 12px;
+    text-decoration: none;
+    color: var(--text);
+    box-shadow: 0 3px 14px rgba(168,79,99,0.07);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    animation: fadeUp 0.5s ease both;
+  }
+  .link-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(168,79,99,0.15);
+    border-color: var(--rose);
+  }
+
+  .card-icon {
+    font-size: 1.7rem;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon-rose { background: rgba(245,198,208,0.5); }
+  .icon-green { background: rgba(181,203,183,0.5); }
+  .icon-peach { background: rgba(255,220,195,0.5); }
+  .icon-purple { background: rgba(220,205,240,0.5); }
+
+  .card-text { flex: 1; }
+  .card-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    line-height: 1.2;
+    color: var(--text);
+  }
+  .card-sub {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    margin-top: 2px;
+  }
+  .card-arrow {
+    color: var(--rose);
+    font-size: 1rem;
+    opacity: 0.6;
+  }
+
+  /* ---- PRODUCT BADGE ---- */
+  .product-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--rose), var(--deep-rose));
+    color: white;
+    border-radius: 20px;
+    padding: 2px 8px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* ---- CTA BUTTON ---- */
+  .cta-wrap {
+    text-align: center;
+    margin-top: 36px;
+    animation: fadeUp 0.6s ease 0.4s both;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--rose), var(--deep-rose));
+    color: white;
+    text-decoration: none;
+    padding: 16px 36px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    box-shadow: 0 6px 24px rgba(168,79,99,0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 10px;
+  }
+  .cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(168,79,99,0.45);
+  }
+  .cta-sub {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: 8px;
+  }
+
+  /* ---- SOCIAL ---- */
+  .social-row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 30px;
+  }
+  .social-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--warm-white);
+    border: 1px solid rgba(245,198,208,0.7);
+    border-radius: 30px;
+    padding: 8px 16px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--deep-rose);
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .social-btn:hover {
+    background: var(--blush);
+    transform: translateY(-2px);
+  }
+
+  /* ---- FOOTER ---- */
+  .footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.75rem;
+    color: var(--text-light);
+  }
+  .footer span { color: var(--rose); }
+
+  /* ---- ANIMATIONS ---- */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.18s; }
+  .delay-3 { animation-delay: 0.26s; }
+  .delay-4 { animation-delay: 0.34s; }
+  .delay-5 { animation-delay: 0.08s; }
+  .delay-6 { animation-delay: 0.16s; }
+  .delay-7 { animation-delay: 0.24s; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER / BIO -->
+  <div class="header">
+    <div class="avatar-wrap">
+      <div class="avatar-inner">🌸</div>
+    </div>
+    <h1 class="name">Julie Gilson</h1>
+    <p class="tagline">Nana of 5 · Gut Health Advocate · Amare Wellness Partner</p>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      🌸 🌸 🌸
+      <div class="divider-line right"></div>
+    </div>
+
+    <p class="bio">
+      Hi, I'm Julie — but most people know me as <strong>Nana</strong>! 💛 I'm a grandmother of five beautiful grandkids, and a few years ago I discovered that healing my gut changed absolutely everything — my weight, my mood, my energy, and my joy.
+      <br><br>
+      Now I share what I've found with women who are ready to feel good again. Whether you're a mama, a grandma, or just someone who's been putting yourself last — it's <em>not too late</em> to feel amazing. I'm living proof. 🙌
+    </p>
+  </div>
+
+  <!-- MY PAGES -->
+  <div class="section-label">✨ My Pages</div>
+
+  <a href="https://gilsonmom3.github.io/gilsonnana.github.io" target="_blank" class="link-card delay-1">
+    <div class="card-icon icon-rose">🌿</div>
+    <div class="card-text">
+      <div class="card-title">My Wellness Story & Shop</div>
+      <div class="card-sub">Full product line · My personal journey · Learn more</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <a href="https://gilsonmom3.github.io/Neucollagen/" target="_blank" class="link-card delay-2">
+    <div class="card-icon icon-purple">💜</div>
+    <div class="card-text">
+      <div class="card-title">NeuCollagen™ <span class="product-badge">Favorite</span></div>
+      <div class="card-sub">Beauty from the inside out · Clinical-grade collagen</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <a href="https://gilsonmom3.github.io/everbalance/everbalance.html" target="_blank" class="link-card delay-3">
+    <div class="card-icon icon-green">🌱</div>
+    <div class="card-text">
+      <div class="card-title">EverBalance</div>
+      <div class="card-sub">Hormonal harmony · Women's wellness support</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <a href="https://gilsonmom3.github.io/slim2fit/slim2fit.html" target="_blank" class="link-card delay-4">
+    <div class="card-icon icon-peach">🔥</div>
+    <div class="card-text">
+      <div class="card-title">Slim2Fit</div>
+      <div class="card-sub">Healthy weight support · Gut-focused approach</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <a href="https://gilsonmom3.github.io/therootist/rootist.html" target="_blank" class="link-card" style="animation-delay:0.42s; animation: fadeUp 0.5s ease 0.42s both;">
+    <div class="card-icon icon-rose">🌾</div>
+    <div class="card-text">
+      <div class="card-title">The Rootist</div>
+      <div class="card-sub">Plant-powered nutrition · Root-cause wellness</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <!-- FAVORITES -->
+  <div class="section-label">🧃 My Amare Favorites</div>
+
+  <a href="https://www.amare.com/2053854/en-us/happy-juice-pack" target="_blank" class="link-card delay-5">
+    <div class="card-icon icon-rose">🍓</div>
+    <div class="card-text">
+      <div class="card-title">Happy Juice Bundle <span class="product-badge">Top Pick</span></div>
+      <div class="card-sub">My #1 daily ritual · Gut-brain nourishment</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <a href="https://www.amare.com/2053854/en-us/kids-happy-juice" target="_blank" class="link-card delay-6">
+    <div class="card-icon icon-green">🌈</div>
+    <div class="card-text">
+      <div class="card-title">Kids Happy Juice</div>
+      <div class="card-sub">Grandkid approved! · Gut health for little ones</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <a href="https://www.amare.com/2053854/en-us/KidsMoodPlus" target="_blank" class="link-card delay-7">
+    <div class="card-icon icon-peach">😊</div>
+    <div class="card-text">
+      <div class="card-title">Kids Mood+</div>
+      <div class="card-sub">Emotional balance for kids · Nana-tested ❤️</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <!-- CTA -->
+  <div class="cta-wrap">
+    <a href="https://www.amare.com/2053854/en-us" target="_blank" class="cta-btn">
+      🌸 Shop My Amare Store
+    </a>
+    <p class="cta-sub">Questions? I'd love to help you find what's right for you! 💛</p>
+  </div>
+
+  <!-- SOCIAL -->
+  <div class="social-row">
+    <a href="https://www.facebook.com/julie.haney.gilson" target="_blank" class="social-btn">
+      📘 Facebook
+    </a>
+    <a href="https://www.instagram.com/jewelg1965/" target="_blank" class="social-btn">
+      📷 Instagram
+    </a>
+    <a href="https://linktr.ee/gilsonnana4321" target="_blank" class="social-btn">
+      🔗 Linktree
+    </a>
+  </div>
+
+  <div class="footer">
+    Made with <span>♥</span> by Nana Julie · Amare Partner #2053854
+  </div>
+
+</div>
+</body>
+</html>
